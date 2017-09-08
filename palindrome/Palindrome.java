@@ -1,6 +1,4 @@
-﻿import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+﻿import java.util.Arrays;
 import java.util.function.Predicate;
 
 public class Palindrome {
@@ -94,46 +92,5 @@ public class Palindrome {
         }
 
         return false;
-    }
-
-    /**
-     * Detects an indices where 'haystack' part has matching 'needle' part anagram.
-     * For example:
-     * haystack: abbcba
-     * needle: ab
-     * result: { 0, 4 }
-     * Explanation:
-     * 0: ab = ab
-     * 4: ba = ab (when rotated)
-     * @param haystack the source to verify
-     * @param needle the value to match
-     * @return an indices of anagrams
-     */
-    public static List<Integer> getAnagramIndices(String haystack, String needle) {
-        List<Integer> indices = new ArrayList<>();
-        int len = needle.length();
-
-        for (int i = 0; i < haystack.length(); i++) {
-            int endIndex = i + len;
-            if (endIndex > haystack.length() - 1) {
-                break;
-            }
-            String substring = haystack.substring(i, endIndex);
-            if (isAnagram(substring, needle)) {
-                indices.add(i);
-            }
-        }
-
-        return indices;
-    }
-
-    private static boolean isAnagram(String test, String origin) {
-        char[] op1 = test.toCharArray();
-        char[] op2 = origin.toCharArray();
-
-        Arrays.sort(op1);
-        Arrays.sort(op2);
-
-        return Arrays.equals(op1, op2);
     }
 }
