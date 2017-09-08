@@ -55,7 +55,7 @@ fun countCharactersHasBeenRemovedToHaveAnagrams(first: String, second: String): 
     return result
 }
 
-fun testAnagramIndices() {
+fun testAnagrams() {
     getAnagramIndices("abba", "ba").forEach { x -> println(x) }
     println(countCharactersHasBeenRemovedToHaveAnagrams("abc", "cde"))
 }
