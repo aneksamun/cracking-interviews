@@ -1,0 +1,13 @@
+src/main/java/
+src/main/resources/
+src/test/java/
+src/test/kotlin/
+
+.idea/
+*.jar
+.gradle
+/build/
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+src/test/
