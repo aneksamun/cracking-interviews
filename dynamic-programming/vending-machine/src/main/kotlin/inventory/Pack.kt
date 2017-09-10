@@ -1,4 +1,4 @@
-package coins
+package inventory
 
 import exceptions.NotEnoughBalanceException
 

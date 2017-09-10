@@ -1,6 +1,6 @@
-package coins
+package inventory
 
-import coins.Currency.GBP
+import inventory.Currency.GBP
 
 class OnePound : Coin(100, GBP) {
 

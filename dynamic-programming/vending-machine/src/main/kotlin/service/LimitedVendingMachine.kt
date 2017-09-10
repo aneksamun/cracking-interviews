@@ -1,12 +1,11 @@
 package service
 
-import coins.Coin
-import coins.Pack
-import core.VendingMachine
+import inventory.Coin
+import inventory.Pack
 
-class LimitedVendingMachine(private val packs: List<Pack>) : VendingMachine<Pack> {
+class LimitedVendingMachine(private val packs: List<Pack>) {
 
-    override fun dispense(amount: Int): Sequence<Coin> {
+    fun dispense(amount: Int): Sequence<Coin> {
         return sequenceOf()
     }
 }

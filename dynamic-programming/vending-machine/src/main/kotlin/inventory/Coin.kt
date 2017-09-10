@@ -1,4 +1,4 @@
-package coins
+package inventory
 
 abstract class Coin protected constructor(val denomination: Int, val currency: Currency) : Comparable<Coin> {
 

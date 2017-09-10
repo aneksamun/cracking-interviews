@@ -1,8 +1,8 @@
-package coins
+package inventory
 
-import coins.Currency.GBX
+import inventory.Currency.GBX
 
-class FiftyPence : Coin(50, GBX) {
+class FivePence : Coin(5, GBX) {
 
     override fun toString(): String {
         return "$denomination${currency.sign}"

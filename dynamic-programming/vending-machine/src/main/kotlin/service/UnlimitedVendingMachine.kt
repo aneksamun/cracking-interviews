@@ -1,11 +1,10 @@
 package service
 
-import coins.Coin
-import core.VendingMachine
+import inventory.Coin
 
-class UnlimitedVendingMachine(private val coins: List<Coin>) : VendingMachine<Coin> {
+class UnlimitedVendingMachine(private val coins: List<Coin>) {
 
-    override fun dispense(amount: Int): Sequence<Coin> {
+    fun dispense(amount: Int): Sequence<Coin> {
         return sequenceOf()
     }
 }

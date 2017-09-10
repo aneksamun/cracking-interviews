@@ -1,6 +1,6 @@
-package coins
+package inventory
 
-import coins.Currency.GBX
+import inventory.Currency.GBX
 
 class TenPence : Coin(10, GBX) {
 
