@@ -2,26 +2,23 @@ package coins
 
 import exceptions.NotEnoughBalanceException
 
-data class Pack(val coin: Coin, var size: Int) {
+data class Pack(val coin: Coin, val size: Int) {
 
     operator fun minus(decrement: Int) : Pack {
         if (decrement > size) throw NotEnoughBalanceException()
-        size -= decrement
-        return this
+        return this.copy(size = this.size - decrement)
     }
 
     operator fun dec() : Pack {
-        if (size > 0) size--
-        return this
+        if (this.size < 1) throw NotEnoughBalanceException()
+        return this.copy(size = this.size - 1)
     }
 
     operator fun plus(increment: Int) : Pack {
-        size += increment
-        return this
+        return this.copy(size = this.size + increment)
     }
 
     operator fun inc() : Pack {
-        size++
-        return this
+        return this.copy(size = this.size + 1)
     }
 }
