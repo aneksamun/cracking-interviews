@@ -8,25 +8,25 @@ import kotlin.test.assertEquals
 
 class CoinsAddSpec : Spek({
 
-    describe ("add coins to the 50p pack") {
+    describe("add coins to the 50p pack") {
         val pennies = Pack(FiftyPence(), 19)
 
-        on ("coins add") {
+        on("coins add") {
             val addition = pennies + 1
 
-            it ("should increase total size of coins") {
+            it("should increase total size of coins") {
                 assertEquals(20, addition.size)
             }
         }
     }
 
-    describe ("increase size of 10p coins") {
+    describe("increase size of 10p coins") {
         var pennies = Pack(TenPence(), 1)
 
-        on ("coins increase") {
+        on("coins increase") {
             pennies++
 
-            it ("should increase the size of coins by one") {
+            it("should increase the size of coins by one") {
                 assertEquals(2, pennies.size)
             }
         }
