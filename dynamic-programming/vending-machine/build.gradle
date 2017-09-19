@@ -55,6 +55,9 @@ jar {
     manifest {
         attributes 'Main-Class': 'ApplicationKt'
     }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 
 compileKotlin {
