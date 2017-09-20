@@ -1,12 +1,12 @@
 package inventory
 
 import exceptions.NotEnoughBalanceException
-import fixture.throws
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.api.dsl.on
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 class CoinsSubtractSpec : Spek({
 
@@ -26,7 +26,7 @@ class CoinsSubtractSpec : Spek({
         val pennies = Pack(OnePence(), 0)
 
         on("coins subtract") {
-            throws<NotEnoughBalanceException> { pennies - 1 }
+            assertFailsWith<NotEnoughBalanceException> { pennies - 1 }
         }
     }
 
@@ -46,7 +46,7 @@ class CoinsSubtractSpec : Spek({
         var pennies = Pack(FivePence(), 0)
 
         on("coins decrease") {
-            throws<NotEnoughBalanceException> { pennies-- }
+            assertFailsWith<NotEnoughBalanceException> { pennies-- }
         }
     }
 })

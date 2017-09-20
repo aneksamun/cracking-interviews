@@ -47,6 +47,7 @@ defaultTasks 'run'
 
 run {
     standardInput = System.in
+    args = [ '--help' ]
 }
 
 mainClassName = 'ApplicationKt'
