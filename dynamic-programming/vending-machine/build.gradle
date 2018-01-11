@@ -2,10 +2,10 @@ group 'org.programming.vendingmachine'
 version '1.0'
 
 buildscript {
-    ext.spek_version = '1.1.4'
-    ext.kotlin_version = '1.1.4-3'
+    ext.spek_version = '1.1.5'
+    ext.kotlin_version = '1.2.10'
     ext.kotlin_argparser_version = '2.0.3'
-    ext.junit_platform_plugin_version = '1.0.0-RC2'
+    ext.junit_platform_plugin_version = '1.0.2'
 
     repositories {
         mavenCentral()

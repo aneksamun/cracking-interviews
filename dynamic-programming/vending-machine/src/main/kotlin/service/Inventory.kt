@@ -1,6 +1,5 @@
 package service
 
-enum class Inventory {
-    LIMITED,
-    UNLIMITED
-}
+import inventory.Coin
+
+interface Inventory: Iterable<Coin>
