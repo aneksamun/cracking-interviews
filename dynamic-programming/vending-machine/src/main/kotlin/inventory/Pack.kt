@@ -1,6 +1,6 @@
 package inventory
 
-import exceptions.NotEnoughBalanceException
+import exception.NotEnoughBalanceException
 
 data class Pack(val coin: Coin, val size: Int) {
 
