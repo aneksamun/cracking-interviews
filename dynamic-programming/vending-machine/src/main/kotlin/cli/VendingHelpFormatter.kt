@@ -13,9 +13,9 @@ class VendingHelpFormatter : HelpFormatter {
     }
 
     private class Help private constructor(private val name: String,
-                                           private val requiredArgs: List<HelpFormatter.Value>,
-                                           private val optionalArgs: List<HelpFormatter.Value>,
-                                           private val positionalArgs: List<HelpFormatter.Value>,
+                                           private val required: List<HelpFormatter.Value>,
+                                           private val optional: List<HelpFormatter.Value>,
+                                           private val positional: List<HelpFormatter.Value>,
                                            private val columns: Int) {
 
         companion object {
@@ -25,8 +25,14 @@ class VendingHelpFormatter : HelpFormatter {
             }
         }
 
-        override fun toString(): String = buildString {
-            appendln("usage: $name ")
+        override fun toString() = printUsage()
+
+        private fun printUsage() = buildString {
+            append("usage: $name")
+            required.forEach { append(" ${it.usages.joinToString("|")}") }
+            optional.forEach { append(" ${it.usages.joinToString("|", prefix = "[", postfix = "]")}") }
+            positional.forEach { append(" ${it.usages.joinToString("|")}") }
+            appendln()
         }
 
         class Builder private constructor() {
