@@ -26,13 +26,28 @@ class VendingHelpFormatter : HelpFormatter {
         }
 
         override fun toString() = printUsage()
+                .plus(printArguments("required", required, columns))
+                .plus(printArguments("optional", optional, columns))
+                .plus(printArguments("positional", positional, columns))
 
         private fun printUsage() = buildString {
             append("usage: $name")
-            required.forEach { append(" ${it.usages.joinToString("|")}") }
+            required.forEach { append(" ${it.usages.joinToString("|", prefix = "(", postfix = ")")}") }
             optional.forEach { append(" ${it.usages.joinToString("|", prefix = "[", postfix = "]")}") }
             positional.forEach { append(" ${it.usages.joinToString("|")}") }
             appendln()
+        }
+
+        private fun printArguments(name: String,
+                                   options: List<HelpFormatter.Value>,
+                                   columns: Int) = buildString {
+            if (options.isNotEmpty()) {
+                appendln()
+                appendln("$name arguments")
+                for (option in options) {
+
+                }
+            }
         }
 
         class Builder private constructor() {
