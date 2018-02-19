@@ -4,6 +4,7 @@ import redis.clients.jedis.Jedis;
 
 import java.io.Closeable;
 import java.util.Base64;
+import java.util.Optional;
 
 public class ImageStore implements Closeable {
 
@@ -15,7 +16,7 @@ public class ImageStore implements Closeable {
         this(new Jedis());
     }
 
-    protected ImageStore(Jedis jedis) {
+    private ImageStore(Jedis jedis) {
         this.jedis = jedis;
     }
 
@@ -42,11 +43,9 @@ public class ImageStore implements Closeable {
      * @return the image content
      */
     public byte[] fetchImage(String id) {
-        String encodedImage = jedis.get(id);
-        if (encodedImage == null) {
-            return null;
-        }
-        return Base64.getDecoder().decode(encodedImage);
+        return Optional.ofNullable(jedis.get(id))
+                .map(encodedImage -> Base64.getDecoder().decode(encodedImage))
+                .orElse(null);
     }
 
     /**

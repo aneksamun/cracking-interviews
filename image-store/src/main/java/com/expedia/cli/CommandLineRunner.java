@@ -2,8 +2,6 @@ package com.expedia.cli;
 
 import org.apache.commons.cli.*;
 
-import java.util.List;
-
 import static com.expedia.cli.ImageStoreOption.PRINT_HELP;
 
 public final class CommandLineRunner {
