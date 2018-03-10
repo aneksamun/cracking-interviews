@@ -58,7 +58,6 @@ class DispenseHelpFormatter : HelpFormatter {
                     val leftColumn = formatArgument(arg).wrapText(columnWidth - indentWidth).prependIndent(indent)
                     val rightColumn = arg.help.wrapText(totalWidth - columnWidth - 2 * indentWidth).prependIndent(indent)
                     appendln(columnize(leftColumn, rightColumn, minWidths = intArrayOf(columnWidth)))
-                    appendln()
                 }
             }
         }

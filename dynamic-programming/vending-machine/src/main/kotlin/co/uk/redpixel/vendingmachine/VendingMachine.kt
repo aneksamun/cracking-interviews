@@ -1,7 +1,6 @@
 package co.uk.redpixel.vendingmachine
 
 import co.uk.redpixel.vendingmachine.coin.Coin
-import co.uk.redpixel.vendingmachine.common.addOrUpdate
 import co.uk.redpixel.vendingmachine.supply.Inventory
 import java.util.*
 
@@ -25,7 +24,10 @@ class VendingMachine(private val inventory: Inventory) {
 
                         if (table[denomination] > totalRequired) {
                             table[denomination] = totalRequired
-                            pennies.addOrUpdate(denomination, coin)
+                            when {
+                                pennies.size > denomination -> pennies[denomination] = coin
+                                else -> pennies.add(coin)
+                            }
                         }
                     }
                 }
