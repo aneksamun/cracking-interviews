@@ -1,19 +1,23 @@
 package co.uk.redpixel.vendingmachine.supply
 
-import co.uk.redpixel.vendingmachine.coin.Coin
+import co.uk.redpixel.vendingmachine.coin.Pack
 import kotlin.properties.Delegates
 
-class LimitedInventory(stock: Stock) : Inventory {
+class Packs(stock: Stock) : Inventory<Pack> {
 
     private var coinPackList by Delegates.observable(stock.load().sortedBy { it.coin }) { _, _, new ->
         stock.update(new)
+    }
+
+    override fun get(index: Int): Pack {
+        return coinPackList[index]
     }
 
     override fun size(): Int {
         return coinPackList.size
     }
 
-    override fun iterator(): Iterator<Coin> {
-        return coinPackList.map { it.coin }.iterator()
+    override fun iterator(): Iterator<Pack> {
+        return coinPackList.iterator()
     }
 }

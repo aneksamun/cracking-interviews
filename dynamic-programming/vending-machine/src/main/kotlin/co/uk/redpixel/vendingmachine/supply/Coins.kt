@@ -2,9 +2,9 @@ package co.uk.redpixel.vendingmachine.supply
 
 import co.uk.redpixel.vendingmachine.coin.*
 
-class UnlimitedInventory : Inventory {
+class Coins : Inventory<Coin> {
 
-    private val coins = listOf(
+    private val items = listOf(
             OnePence(),
             TwoPence(),
             FivePence(),
@@ -14,11 +14,15 @@ class UnlimitedInventory : Inventory {
             OnePound()
     )
 
+    override fun get(index: Int): Coin {
+        return items[index]
+    }
+
     override fun size(): Int {
-        return coins.size
+        return items.size
     }
 
     override fun iterator(): Iterator<Coin> {
-        return coins.iterator()
+        return items.iterator()
     }
 }

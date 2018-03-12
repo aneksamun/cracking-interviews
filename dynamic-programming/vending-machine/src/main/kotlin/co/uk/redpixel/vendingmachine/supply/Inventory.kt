@@ -1,7 +1,6 @@
 package co.uk.redpixel.vendingmachine.supply
 
-import co.uk.redpixel.vendingmachine.coin.*
-
-interface Inventory : Iterable<Coin> {
+interface Inventory<out T> : Iterable<T> {
+    operator fun get(index: Int): T
     fun size(): Int
 }

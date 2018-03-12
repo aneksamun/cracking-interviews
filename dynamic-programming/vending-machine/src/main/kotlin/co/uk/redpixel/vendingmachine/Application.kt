@@ -20,7 +20,7 @@ fun main(args: Array<String>) {
         val parser = ArgParser(args, helpFormatter = DispenseHelpFormatter())
 
         DispenseOptions(parser).run {
-            val machine = VendingMachine(inventory = craftInventory())
+            val machine = VendingMachine.on(inventory = craftInventory())
 
             do {
                 print("\nEnter amount: ")
