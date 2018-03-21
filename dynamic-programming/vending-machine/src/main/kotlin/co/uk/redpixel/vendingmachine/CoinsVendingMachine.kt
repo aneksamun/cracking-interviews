@@ -1,15 +1,15 @@
 package co.uk.redpixel.vendingmachine
 
+import co.uk.redpixel.vendingmachine.coin.Change
 import co.uk.redpixel.vendingmachine.coin.Coin
 import co.uk.redpixel.vendingmachine.supply.Coins
-import java.util.ArrayList
 
 class CoinsVendingMachine(private val coins: Coins) : VendingMachine {
 
     private val table = mutableListOf(0)
     private val pennies = mutableListOf<Coin?>(null)
 
-    override infix fun dispense(amount: Int): List<Coin> {
+    override infix fun dispense(amount: Int): Change {
         when {
             table.size <= amount ->
                 for (denomination in table.size..amount) {
@@ -36,11 +36,12 @@ class CoinsVendingMachine(private val coins: Coins) : VendingMachine {
         return findOptimalChange(amount)
     }
 
-    private fun findOptimalChange(current: Int): MutableList<Coin> {
+    private fun findOptimalChange(current: Int): Change {
         return if (current > 0) {
-            val coins = findOptimalChange(current - pennies[current]!!.denomination)
-            coins.add(pennies[current]!!)
-            coins
-        } else ArrayList()
+            val coin = pennies[current]!!
+            val change = findOptimalChange(current - coin.denomination)
+            change.merge(coin)
+            change
+        } else Change.empty()
     }
 }

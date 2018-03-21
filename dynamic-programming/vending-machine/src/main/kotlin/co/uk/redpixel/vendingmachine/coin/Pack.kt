@@ -2,7 +2,7 @@ package co.uk.redpixel.vendingmachine.coin
 
 import co.uk.redpixel.vendingmachine.common.NotEnoughBalanceException
 
-data class Pack(val coin: Coin, var size: Int) {
+data class Pack(val coin: Coin, val size: Int) {
 
     operator fun minus(decrement: Int) : Pack {
         if (decrement > size) throw NotEnoughBalanceException()
@@ -20,5 +20,9 @@ data class Pack(val coin: Coin, var size: Int) {
 
     operator fun inc() : Pack {
         return this.copy(size = this.size + 1)
+    }
+
+    override fun toString(): String {
+        return "${coin}x$size"
     }
 }

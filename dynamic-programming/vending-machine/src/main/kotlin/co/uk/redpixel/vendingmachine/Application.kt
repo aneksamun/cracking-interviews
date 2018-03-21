@@ -32,8 +32,9 @@ fun main(args: Array<String>) {
                         val change = machine dispense amount
 
                         if (change.any()) {
-                            println("The least number of coins is ${change.size}.")
-                            println(change.joinToString(separator = " "))
+                            val total = change.total()
+                            println("The least required coins ${if (total > 1) "are" else "is"} $total.")
+                            println(change)
                         }
                         else println("No coins are dispensed.")
 

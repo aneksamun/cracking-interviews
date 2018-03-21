@@ -5,7 +5,7 @@ import kotlin.properties.Delegates
 
 class Packs(stock: Stock) : Inventory<Pack> {
 
-    private var coinPackList by Delegates.observable(stock.load().sortedBy { it.coin }) { _, _, new ->
+    private val coinPackList: MutableList<Pack> by Delegates.observable(loadFrom(stock)) { _, _, new ->
         stock.update(new)
     }
 
@@ -19,5 +19,13 @@ class Packs(stock: Stock) : Inventory<Pack> {
 
     override fun iterator(): Iterator<Pack> {
         return coinPackList.iterator()
+    }
+
+    fun update(index: Int, size: Int) {
+        coinPackList[index] = coinPackList[index].copy(size = size)
+    }
+
+    private fun loadFrom(stock: Stock): MutableList<Pack> {
+        return stock.load().sortedBy { it.coin }.toMutableList()
     }
 }

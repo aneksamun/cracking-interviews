@@ -1,6 +1,6 @@
 package co.uk.redpixel.vendingmachine
 
-import co.uk.redpixel.vendingmachine.coin.Coin
+import co.uk.redpixel.vendingmachine.coin.Change
 import co.uk.redpixel.vendingmachine.common.UnsupportedInventory
 import co.uk.redpixel.vendingmachine.supply.Coins
 import co.uk.redpixel.vendingmachine.supply.Inventory
@@ -8,7 +8,7 @@ import co.uk.redpixel.vendingmachine.supply.Packs
 
 interface VendingMachine {
 
-    infix fun dispense(amount: Int): List<Coin>
+    infix fun dispense(amount: Int): Change
 
     companion object {
         fun <T> on(inventory: Inventory<T>): VendingMachine {
