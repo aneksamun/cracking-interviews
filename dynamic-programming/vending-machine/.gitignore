@@ -1,9 +1,0 @@
-.idea/
-*.jar
-.gradle
-/out/
-/build/
-
-!gradle-wrapper.jar
-
-*.iml
