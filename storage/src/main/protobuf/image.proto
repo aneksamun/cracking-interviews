@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+option java_package = "co.uk.redpixel.transport";
+option java_outer_classname = "Images";
+
+message Image {
+    required string extension = 1;
+    required bytes content = 2;
+}
