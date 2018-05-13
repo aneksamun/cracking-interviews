@@ -16,7 +16,7 @@ Having balance
 
 Application calculates the least number of coins/notes.   
 
-Example:   
-Enter amount: 120 
+### Example   
+Enter amount: 120   
 Optimal change: £50x2, £20x1
 
