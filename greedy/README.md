@@ -18,5 +18,6 @@ Application calculates the least number of coins/notes.
 
 ### Example   
 Enter amount: 120   
-Optimal change: £50x2, £20x1
+Optimal change: £1x1, 20px1
+
 
