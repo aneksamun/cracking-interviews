@@ -1,4 +1,4 @@
-# Implemantation of Greedy coin algorithm
+# Implemantation of Greedy coin change algorithm
 
 Having balance 
 - 1p x 100, 
