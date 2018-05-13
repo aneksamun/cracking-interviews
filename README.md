@@ -1,3 +1,3 @@
 # Problem Solutions
 
-Contains an algiorithms and implementations for different problem solving.
+Contains an algorithms and implementations for different problem solving.
