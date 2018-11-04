@@ -39,7 +39,7 @@ fun testFindPairsForGivenSum() {
  * @param k The value which difference of two other numbers should match
  * @return the count of pairs
  */
-fun countPairs(numbers: IntArray, k: Int): Int {
+fun countPairsForDifference(numbers: IntArray, k: Int): Int {
     var total = 0
     var current = 0
     var next = 1
@@ -64,7 +64,28 @@ fun countPairs(numbers: IntArray, k: Int): Int {
 fun testCountPairsForGivenDifference() {
     val sum = 1
     val numbers = intArrayOf(7, 6, 2, 5)
-    val pairs = countPairs(numbers, sum)
+    val pairs = countPairsForDifference(numbers, sum)
     println("Total pairs $pairs")
 }
 
+/**
+ * Counts pairs within array.
+ * @param pile The numbers to traverse
+ * @return count
+ * Example:
+ * [1, 2, 1, 2, 1, 3, 2]
+ * 2
+ */
+fun countPairs(pile: IntArray): Int {
+    var pairs = 0
+    val unique = hashSetOf<Int>()
+
+    for (current in pile) {
+        if (!unique.add(current)) {
+            unique.remove(current)
+            pairs++
+        }
+    }
+
+    return pairs
+}
