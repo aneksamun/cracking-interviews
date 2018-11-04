@@ -1,10 +1,10 @@
 /**
- * Counts character within string being repeated multiple times.
- * @param pattern the string chunk being repeated.
- * @param length the number of letters being shrink till.
- * @param ch the character to lookup.
+ * Counts character within string being repeated multiple times
+ * @param pattern the string chunk being repeated
+ * @param length the limit of the letters being repeated till
+ * @param ch the character to lookup
  * Examples:
- * For "aba" shrink till 10 characters should have 7 characters of 'a'.
+ * "aba" reapeated while contains 10 characters, should have 7 characters of 'a'
  * abaabaabaa
  */
 fun countCharacterInRepeatingString(pattern: String, times: Int, ch: Char): Int {
