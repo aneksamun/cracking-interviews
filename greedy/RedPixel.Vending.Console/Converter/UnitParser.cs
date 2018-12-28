@@ -42,7 +42,7 @@
                 case Pence.Symbol:
                     return new Pence(denomination);
                 default:
-                    throw new NotSupportedException($"The curency symbol '{symbol}' is not supported");
+                    throw new NotSupportedException($"The currency symbol '{symbol}' is not supported");
             }
         }
     }

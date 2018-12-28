@@ -37,7 +37,7 @@
 
         It should_separate_units_by_comma = () =>
         {
-            actual.Should().Be("1px1, 2px2, 5px5, 10px10, 20px20, 50px50, £1x100, £2x200, £5x500, £10x1000, £20x2000, £50x5000");
+            actual.Should().Be("1px1, 2px2, 5px5, 10px10, 20px20, 50px50, £1x100, £2x200, £3x300, £5x500, £10x1000, £20x2000, £50x5000");
         };
 
         static Inventory inventory;
