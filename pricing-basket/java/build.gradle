@@ -1,0 +1,44 @@
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.h2database:h2:${h2Version}"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+mainClassName = "com.bjss.exercise.Application"
+
+dependencies {
+    compile "org.springframework.data:spring-data-jpa:${springDataJpaVersion}"
+    compile "org.hibernate:hibernate-core:${hibernateCoreVersion}"
+    compile "com.h2database:h2:${h2Version}"
+    compile "org.slf4j:slf4j-nop:${slf4jNopVersion}"
+    compile "org.jetbrains:annotations:${jetbrainsAnotationsVersion}"
+
+    testCompile "org.spockframework:spock-core:${spockVersion}"
+    testCompile "org.codehaus.groovy:groovy-all:${groovyVersion}"
+}
+
+run {
+    args = ["soup", "soup", "bread", "arg1", "arg2"]
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.bjss.exercise.Application'
+    }
+}
