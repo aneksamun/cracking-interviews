@@ -14,3 +14,4 @@ Contains algorithms and implementations for different problem solving.
 - _storage_ - project developed in **Java** using **Redis** to store images no more than once. 
 - _strings_ - contains algorithms for manipulation on strings. 
 - _tips_ - contains useful tips and practices.
+- _trees_ - contains problem solving applying graph algorithms.
