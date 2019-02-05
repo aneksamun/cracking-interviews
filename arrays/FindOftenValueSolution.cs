@@ -11,19 +11,22 @@
     public static int Solve(int max, int[] numbers)
     {
         var count = new int[max + 1];
+
         var maxOccurrence = -1;
         var index = 0;
+
         for (var i = 0; i < numbers.Length; i++)
         {
-            var currentNumber = numbers[i];
-            var currentCount = count[currentNumber];
-            if (currentCount > maxOccurrence)
+            var times = count[numbers[i]];
+            times++;
+            if (times > maxOccurrence)
             {
-                maxOccurrence = currentCount;
+                maxOccurrence = times;
                 index = i;
             }
-            count[currentNumber] = currentCount + 1;
+            count[numbers[i]] = times;
         }
+
         return numbers[index];
     }
 }
