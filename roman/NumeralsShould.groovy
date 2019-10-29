@@ -1,5 +1,3 @@
-package co.uk.redpixel.scoring.core
-
 import spock.lang.Specification
 
 class NumeralsShould extends Specification {

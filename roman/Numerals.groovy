@@ -1,4 +1,3 @@
-package co.uk.redpixel.scoring.core
 
 class Numerals {
 
@@ -22,7 +21,7 @@ class Numerals {
 
     String convert(int number) {
         String roman = ''
-        numerals.each { numeral ->
+        getNumerals.each { numeral ->
             while (number >= numeral.value) {
                 roman = roman.concat(numeral.symbol)
                 number -= numeral.value

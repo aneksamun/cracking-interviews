@@ -1,4 +1,4 @@
-﻿public static class FindOftenValueSolution
+﻿public static class FindMostOftenValue
 {
     /// <summary>
     /// Find the often occurring value. 
