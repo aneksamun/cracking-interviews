@@ -1,6 +1,6 @@
 # Cracking Interviews
 
-Contains solutions for different problem solving challenges.
+Contains solutions for different programming problems
 
 ## Subfolders
 
