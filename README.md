@@ -1,6 +1,6 @@
-# Problem Solutions
+# Challenges
 
-Contains algorithms and implementations for different problem solving.
+Contains solutions for different problem solving challenges.
 
 ## Subfolders
 
@@ -11,7 +11,6 @@ Contains algorithms and implementations for different problem solving.
 - _math_ - algorithms for problem solving applying math, for example, multiples, common divider finding problem etc. 
 - _matrix_ - algorithms for drawing matrix. 
 - _operations_over_bits_ - algorithms for problem solving applying bitwise operations, for example, finding lonely integer, nibble data type etc.
-- _pricing_basket_ - solution written in **C#** and **Java** to solve pricing goods problem applying discounts.
 - _storage_ - project developed in **Java** using **Redis** to store images no more than once. 
 - _strings_ - contains algorithms for manipulation on strings. 
 - _tips_ - contains useful tips and practices.
