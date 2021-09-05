@@ -1,3 +1,9 @@
+/**
+ * Execute in Scala REPL:
+ * - Type the :paste
+ * - Paste the function
+ * - Press Ctrl+D to finish
+ */
 object Difference {
 
   /**
