@@ -1,4 +1,4 @@
-# Challenges
+# Cracking Interviews
 
 Contains solutions for different problem solving challenges.
 
