@@ -2,9 +2,8 @@
  * Deque.hpp
  *
  *  Created on: Apr 29, 2012
- *      Author: Sergey
+ *  Author: aneksamun
  */
-
 #ifndef DEQUE_HPP_
 #define DEQUE_HPP_
 

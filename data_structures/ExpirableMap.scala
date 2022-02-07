@@ -2,8 +2,7 @@ import ExpirableMap.ExpiringValue
 
 import scala.concurrent.duration.Duration
 
-final case class ExpirableMap[K, V](private val keyValues: Map[K, ExpiringValue[V]])
-  extends AnyVal {
+final case class ExpirableMap[K, V](private val keyValues: Map[K, ExpiringValue[V]]) extends AnyVal {
 
   def +(pair: (K, V))(implicit duration: Duration): ExpirableMap[K, V] =
     this.+(pair._1, pair._2)

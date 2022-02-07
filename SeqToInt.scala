@@ -4,7 +4,7 @@ object SeqToInt {
 
   /**
    * Seq(9, 1, 3).toInt == 913.toSeq.mkString(", ")
-   */
+   **/
 
   implicit class SeqOps(val items: Seq[Int]) extends AnyVal {
     def toInt: Int =
