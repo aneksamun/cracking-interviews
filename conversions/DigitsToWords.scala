@@ -1,12 +1,6 @@
-/**
- * Execute in Scala REPL:
- * - Type the :paste
- * - Paste the function
- * - Press Ctrl+D to finish
- */
 import scala.annotation.tailrec
 
-object ConvertDigitsToWords {
+object DigitsToWords {
 
   private val Wordings = Array(
     "zero",
@@ -21,9 +15,7 @@ object ConvertDigitsToWords {
     "nine",
   )
 
-  /**
-   * Converts digits to words, for example, 1985 will be converted to "one nine eight five"
-   */
+  // Converts digits to words, for example, 1985 will be converted to "one nine eight five"
   def convert(n: Int): String = {
     @tailrec
     def convertAccumulatingResult(n: Int, acc: Seq[String]): String = {
