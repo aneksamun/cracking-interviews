@@ -1,3 +1,5 @@
+// Converts digits to words, for example, 1985 will be converted to "one nine eight five"
+
 import scala.annotation.tailrec
 
 object DigitsToWords {
@@ -15,7 +17,6 @@ object DigitsToWords {
     "nine",
   )
 
-  // Converts digits to words, for example, 1985 will be converted to "one nine eight five"
   def convert(n: Int): String = {
     @tailrec
     def convertAccumulatingResult(n: Int, acc: Seq[String]): String = {

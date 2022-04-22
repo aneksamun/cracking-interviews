@@ -1,6 +1,8 @@
+//
 // Converts decimal to binary
 // 7 => 00000111
 // 8 => 00001000
+//
 
 #include <iostream>
 
