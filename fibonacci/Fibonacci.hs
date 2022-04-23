@@ -1,4 +1,4 @@
--- Fibonacci seq = {1, 2, 3, 5, 8, 13, 21, ..., n}
+-- Fibonacci seq: 1, 2, 3, 5, 8, 13, 21 ... n
 
 fibonacci 0 = 0
 fibonacci 1 = 1
