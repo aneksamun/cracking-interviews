@@ -5,36 +5,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
    FILE *in, *out;
    int n = 0;
    char buf[20], ch;
 
-   system("clear");
-
-   if(argc != 2)
-   {
+   if(argc != 2) {
       printf("Syntax: [program] [file name].\n");
       exit(1);
    }
 
-   if((in = fopen(argv[1], "r")) == NULL)
-   {
+   if((in = fopen(argv[1], "r")) == NULL) {
       printf("Error on source file opening.\n");
       exit(1);
    }
 
-   if((out = fopen("out", "w+")) == NULL)
-   {
+   if((out = fopen("out", "w+")) == NULL) {
       printf("Error on result file opening.\n");
       exit(1);
    }
 
    while(!feof(in)) {
       ch = getc(in);
-      if (!feof(in))
-      {
+      if (!feof(in)) {
          putchar(ch);
          ++n;
       }
@@ -43,8 +36,7 @@ int main(int argc, char *argv[])
    printf("\n\nSymbols (without 'EOF', but with '\\n'): %d\n", n);
 
    // int fseek(FILE *fp, long int byte_quantity, int start_of_counter)
-   if (fseek(in, -50L, SEEK_END))
-   {
+   if (fseek(in, -50L, SEEK_END)) {
        printf("Error on file seeking.\n");
        exit(1);
    }
@@ -64,22 +56,19 @@ int main(int argc, char *argv[])
    rewind(out);
    ch = getc(out);
 
-   while(ch != EOF)
-   {
+   while(ch != EOF) {
       putchar(ch);
       ch = getc(out);
    }
 
    printf("\n--------------------\n");
    
-   if (in != NULL)
-   {
+   if (in != NULL) {
       fclose(in);
       in = NULL;
    }
 
-   if (out != NULL)
-   {
+   if (out != NULL) {
        fclose(out);
        out = NULL;
    }
