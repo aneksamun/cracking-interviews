@@ -1,9 +1,0 @@
-.idea/
-target/
-
-*.jar
-*.iml
-
-!/.mvn/wrapper/maven-wrapper.jar
-dependency-reduced-pom.xml
-
