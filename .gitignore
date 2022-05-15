@@ -4,3 +4,6 @@
 .history
 .metals
 *.o
+.lsp
+.calva
+.clj-kondo

@@ -37,15 +37,15 @@ int sum_even_fibnum_until(int n) {
     return sum;
 }
 
-int main(int argc, const char *argv[]) {
+int main(int argc, const char* argv[]) {
     for (;;) {
         std::cout << "Enter position: ";
         int pos;
         std::cin >> pos;
-        
+
         if (!std::cin)
             break;
-        
+
         std::cout << "Corresponding number: " << get_fibnum_at(pos) << std::endl;
         std::cout << "Even numbers sum: " << sum_even_fibnum_until(pos) << std::endl;
         std::cout << "\nType any non-number to exit\n";

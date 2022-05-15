@@ -1,3 +1,10 @@
+;; Counts total of '1 'bit in the given number.
+;; (count-population 109)
+;; 5
 
 (defn count-population [n]
-  (take-while (partial > 0) (iterate (partial / 2) n)))
+  (count
+   (filter (fn [x] (= x 1))
+           (map (fn [x] (mod x 2))
+                (take-while #(> %1 0) (iterate #(unchecked-divide-int %1 2) n))))))
+

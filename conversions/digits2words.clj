@@ -1,4 +1,4 @@
-(ns digit2words
+(ns digits2words
   (:require [clojure.string :refer [join]]))
 
 (def wordings ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"])
