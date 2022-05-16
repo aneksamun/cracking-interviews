@@ -3,3 +3,4 @@
 
 calcJumps :: (RealFrac a, Integral p) => a -> a -> a -> p
 calcJumps x y step = ceiling ((x - y) / step)
+
