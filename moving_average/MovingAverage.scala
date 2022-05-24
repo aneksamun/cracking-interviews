@@ -1,6 +1,5 @@
-package co.uk.redpixel.category
 
-object MovingAverageCalculator {
+object MovingAverage {
 
   def calculate(numbers: Seq[Int], window: Int): Array[Double] = {
     val movingAverage = Array.ofDim[Double]((numbers.size - window) + 1)
