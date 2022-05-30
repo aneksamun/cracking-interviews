@@ -1,13 +1,6 @@
 object FindElement {
 
   /**
-    * Finds unique element.
-    * (9, 3, 9, 3, 9, 7, 9) -> 7
-    */
-  def findUniqueElement(array: Array[Int]): Int =
-    array.reduceLeft((x, y) => x ^ y)
-
-  /**
     * Finds missing element in the array.
     * (2, 3, 1, 5) -> 4
     */

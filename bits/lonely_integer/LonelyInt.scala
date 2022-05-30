@@ -1,10 +1,8 @@
-// Detects lonely integer
-// findLonelyInt(1 :: 1 :: 2 :: 3 :: 3 :: Nil)
-// 2
+// Finds unique element.
+// (9, 3, 9, 3, 9, 7, 9) -> 7
 
 object LonelyInt {
-
-  def findLonelyInt(ns: Iterable[Int]): Int = 
-    ns.foldLeft(0) { case (prev, curr) => prev ^ curr }
-    
+  def findUnique(array: Iterable[Int]): Int = {
+    array.reduceLeft((prev, curr) => prev ^ curr)  
+  }
 }
