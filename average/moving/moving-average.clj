@@ -2,7 +2,7 @@
 ;; 1.5 2.5 3.5 nil
 ;;
 ;; (calculate [1 2 3 4] 4)
-;; 2.5 : nil
+;; 2.5 nil
 
 (defn slice [ns begin end]
   (subvec ns begin (+ begin end)))
