@@ -6,7 +6,7 @@ Contains algorithms and solutions for the different problems.
 
 - C++
 ```
-g++ -c <filename>.cpp --std=c++11
+g++ -c <filename>.cpp --std=c++17
 g++ -o <prog_name> <filename>.o
 ./<prog_name>
 ```

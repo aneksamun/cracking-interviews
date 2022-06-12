@@ -1,4 +1,4 @@
-object AB {
+object ab {
 
   def `weather A is always in front of B`(s: String): Boolean =
     (s.lastIndexOf('a'), s.lastIndexOf('b')) match {
