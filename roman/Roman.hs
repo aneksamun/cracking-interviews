@@ -18,7 +18,9 @@ numerals =
   ]
 
 roman :: Int -> [Char]
-roman n = convert n 0
+roman n
+  | n <= 0 = "-"
+  | otherwise = convert n 0
   where
     convert 0 _ = ""
     convert n i =

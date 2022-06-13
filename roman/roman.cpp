@@ -29,7 +29,7 @@ string convert(int number) {
             number -= value;
         }
     }
-    return (roman == "" ? "-//-" : roman);
+    return (roman == "" ? "-" : roman);
 }
 
 int main(int argc, const char* argv[]) {
