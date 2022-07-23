@@ -1,18 +1,3 @@
-/*
- Calculates moving average.
-
- Given
-  ns: [1, 2, 3, 4]
-  window: 4
- produces: 1 + 2 + 3 + 4 / 4 = 2.5
-
- Given
-  ns: [1, 2, 3, 4]
-  window: 2
- produces: [((1 + 2) / 2) ((2 + 3) / 2) + ((3 + 4) / 2)] = [1.5, 2.5, 3.5]
-
-*/
-
 #include <iostream>
 #include <vector>
 #include <numeric>
