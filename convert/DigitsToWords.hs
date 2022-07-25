@@ -1,4 +1,5 @@
--- Converts digits to words, for example, 1985 will be printed as "one nine eight five"
+-- Converts digits to the words, for example, 1985 will be displayed as "one nine eight five".
+
 import Data.Char (isSpace)
 
 type Wording = [Char]
