@@ -1,6 +1,5 @@
 #### <ins>Convert Decimals to Binary<ins>
-
-Converts decimal to binary representation.   
+ 
 Example:
 ```
 2 -> 10
