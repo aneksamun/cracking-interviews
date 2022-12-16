@@ -1,3 +1,4 @@
+To be done:
 nibble: 
 - missing README.md
 valley-counter:
@@ -10,3 +11,9 @@ frog
 - add README.md
 matrix
 - add README.md
+
+Complete:
+- moving-average
+- factorial
+- sum-multiples
+- sum-up-to-n
