@@ -1,4 +1,3 @@
-;; Counts total of '1 'bit in the given number.
 ;; (count-population 109)
 ;; 5
 

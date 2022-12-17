@@ -7,13 +7,6 @@ valley-counter:
 circular-buffer
 - finish implementation
 - add README.md
-frog
-- add README.md
-matrix
-- add README.md
+fibonacci:
+- unify solutions
 
-Complete:
-- moving-average
-- factorial
-- sum-multiples
-- sum-up-to-n
