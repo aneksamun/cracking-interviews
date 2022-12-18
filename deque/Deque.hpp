@@ -7,10 +7,14 @@
 #ifndef DEQUE_HPP_
 #define DEQUE_HPP_
 
-#pragma once
-
 #include <iostream>
-#include "DequeEmptyException.hpp"
+#include <exception>
+
+struct DequeEmptyException : public exception {
+   const char * what () const throw () {
+      return "Deque is empty";
+   }
+};
 
 template<class T>
 class Deque {
