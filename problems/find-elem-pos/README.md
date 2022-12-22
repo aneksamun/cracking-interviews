@@ -1,9 +1,6 @@
-# Find matching positions
+### <ins>Find all positions of the element</ins>
 
-### Task
-Find all occurring positions for given item within list of the items
-
-### Example
+Find all occurring positions for given item within the list of items. Example:
 
 |Input                      | Item  | Postions |
 |---------------------------|-------|----------|
