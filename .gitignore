@@ -3,8 +3,11 @@
 .vscode
 .history
 .metals
+.bsp
 *.o
 .lsp
 .calva
 .clj-kondo
 *.iml
+target
+project

@@ -1,10 +1,9 @@
 To be done:
-valley-counter:
-- missing README.md
-- write Haskell solution
 circular-buffer
 - finish implementation
 - add README.md
 fibonacci:
 - unify solutions
 
+Kotlin 
+- Convert Kotlin solutions to worksheets
