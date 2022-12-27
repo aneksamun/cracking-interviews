@@ -4,6 +4,9 @@ circular-buffer
 - add README.md
 fibonacci:
 - unify solutions
+quicksort:
+- add README.md
+- explain Haskell solution 
 
 Kotlin 
 - Convert Kotlin solutions to worksheets
