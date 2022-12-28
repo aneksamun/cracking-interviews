@@ -1,6 +1,17 @@
 {-# LANGUAGE GADTs #-}
 
-import Data.Maybe ()
+import Control.Arrow (left)
+import Text.Read (readEither)
+
+-- Errors
+
+data InterpretationError = UnsupportedOperand String | StackEmpty
+
+instance Show InterpretationError where
+  show (UnsupportedOperand op) = "Unsupported operand: " ++ op
+  show StackEmpty = "Not enough operands"
+
+-- Stack
 
 data Stack a where
   Stack :: [a] -> Stack a
@@ -12,16 +23,21 @@ empty = Stack []
 push :: a -> Stack a -> Stack a
 push x (Stack xs) = Stack (x : xs)
 
-pop :: Stack a -> Maybe (a, Stack a)
-pop (Stack []) = Nothing
-pop (Stack (x : xs)) = Just (x, Stack xs)
+pop :: Stack a -> Either InterpretationError (a, Stack a)
+pop (Stack []) = Left StackEmpty
+pop (Stack (x : xs)) = Right (x, Stack xs)
 
-interpret :: String -> Maybe Int
-interpret s = fmap fst $ foldl apply (Just empty) (words s) >>= pop
+-- Interpretation
+
+interpret :: String -> Either InterpretationError Int
+interpret s = fmap fst $ foldl apply (Right empty) (words s) >>= pop
   where
-    apply :: Maybe (Stack Int) -> String -> Maybe (Stack Int)
-    apply maybeStack "+" = maybeStack >>= pop >>= \(x, xs) -> pop xs >>= \(y, xs') -> Just (push (x + y) xs')
-    apply maybeStack "-" = maybeStack >>= pop >>= \(x, xs) -> pop xs >>= \(y, xs') -> Just (push (x - y) xs')
-    apply maybeStack "POP" = maybeStack >>= pop >>= \(_, stack) -> Just stack
-    apply maybeStack "DUP" = maybeStack >>= pop >>= \(n, stack) -> Just (push n $ push n stack)
-    apply maybeStack n = fmap (push (read n)) maybeStack
+    apply stack "+" = stack >>= pop >>= \(x, xs) -> pop xs >>= \(y, xs') -> Right (push (x + y) xs')
+    apply stack "-" = stack >>= pop >>= \(x, xs) -> pop xs >>= \(y, xs') -> Right (push (x - y) xs')
+    apply stack "POP" = stack >>= pop >>= \(_, stack) -> Right stack
+    apply stack "DUP" = stack >>= pop >>= \(n, stack) -> Right (push n $ push n stack)
+    apply stack n = do
+      xs <- stack
+      x <- left (\_ -> UnsupportedOperand n) (readEither n :: Either String Int)
+      Right (push x xs)
+
