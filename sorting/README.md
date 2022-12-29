@@ -3,9 +3,9 @@
 #### Bubble sort
 [Implementation](./BubbleSort.ws.kt)   
 
-![Bubble sort](bubble_sort.png)
+![Bubble sort](./img/bubble_sort.png)
 
 #### Quick sort
 [Implementation](./QuickSort.hs)   
 
-![Quick sort](Quicksort.png)
+![Quick sort](./img/Quicksort.png)
