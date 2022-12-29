@@ -1,5 +1,7 @@
 import java.util.*
 
+// https://clojuredocs.org/clojure.core/pop
+
 /**
  * Verifies whether string is balanced, etc, all open and close brackets are present.
  * @param expression The string to verify.
