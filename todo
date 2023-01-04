@@ -5,8 +5,11 @@ circular-buffer
 fibonacci:
 - unify solutions
 quicksort:
+- check Haskell solution 
+bubble sort:
+- check Kotlin solution
+pascal triangle:
 - add README.md
-- explain Haskell solution 
 
 Kotlin 
 - Convert Kotlin solutions to worksheets

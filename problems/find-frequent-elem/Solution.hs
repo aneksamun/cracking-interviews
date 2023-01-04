@@ -1,9 +1,13 @@
 {-# LANGUAGE TupleSections #-}
 
-import qualified Data.Map as Map (fromListWith, foldlWithKey)
---import Data.Map (fromListWith, foldl)
+import qualified Data.Map as Map (foldrWithKey, fromListWith)
 
--- mostFrequent :: (Ord k, Num a) => [k] -> Map k a
-mostFrequent xs = Map.foldlWithKey 0 (\k v -> max v) $ Map.fromListWith (+) $ map (, 1) xs
+mostFrequent :: [Integer] -> Integer
+mostFrequent =
+  fst
+    . Map.foldrWithKey findWithMaxCount (-1, -1)
+    . Map.fromListWith (+)
+    . map (,1)
+  where
+    findWithMaxCount k v max = if v > snd max then (k, v) else max
 
---frequent = fst . findMax . fromListWith (+) . map (,1)

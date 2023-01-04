@@ -2,7 +2,9 @@
 
 using namespace std;
 
-int find_most_frequent_elem(int* array, const int n, const int max) {
+int find_most_frequent_elem(int* array, const int n) {
+    const int max = *max_element(array, array + n);
+
     int* occurrences = new int[max + 1];
     int most_frequent_elem = -1;
 
@@ -18,8 +20,8 @@ int find_most_frequent_elem(int* array, const int n, const int max) {
 }
 
 int main() {
-    int size = 6, max = 3;
+    int size = 6;
     int array[] = {1, 2, 3, 3, 1, 3};
-    cout << find_most_frequent_elem(array, size, max) << endl;
+    cout << find_most_frequent_elem(array, size) << endl;
     return 0;
 }
