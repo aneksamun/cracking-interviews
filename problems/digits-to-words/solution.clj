@@ -4,7 +4,6 @@
 (def wordings ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"])
 
 (defn convert [n] 
-  "Converts a number to words"
   (cond 
     (= n 0) (nth wordings 0)
     :else 
