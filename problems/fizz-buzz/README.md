@@ -28,3 +28,20 @@ for (int i = 1, c3 = 0, c5 = 0; i <= n; i++, c3++, c5++) {
 ```
 It clearly shows the pattern which is been used in [Clojure solution](fizz-buzz.clj) and [Haskell solution](FizzBuzz.hs).
 
+
+- [Clojure solution](fizz_buzz.clj) usage example:
+```clojure
+clj:user:> (take 30 (map fizzbuzz numbers fizzes buzzes))
+(1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17 Fizz 19 Buzz Fizz 22 23 Fizz Buzz 26 Fizz 28 29 FizzBuzz)
+
+clj:user:> (nth (map fizzbuzz numbers fizzes buzzes) 1004)
+"FizzBuzz"
+```
+- [Haskell solution](FizzBuzz.hs) usage example:
+```haskell
+*Main> take 15 fizzBuzzes
+["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
+
+*Main> fizzBuzzes !! 1004
+"FizzBuzz"
+```

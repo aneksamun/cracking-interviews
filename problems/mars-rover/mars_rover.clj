@@ -24,9 +24,9 @@
     (assoc robot :bearing (-> rotations bearing :left))))
 
 (defn move-ahead [robot]
-  (let [{{x :x, y :y} :coordinates, bearing :bearing} robot]
-    (let [{delta-x :delta-x, delta-y :delta-y} (translations bearing)]
-      (assoc robot :coordinates {:x (+ x delta-x), :y (+ y delta-y)}))))
+  (let [{{x :x, y :y} :coordinates, bearing :bearing} robot
+        {delta-x :delta-x, delta-y :delta-y} (translations bearing)]
+      (assoc robot :coordinates {:x (+ x delta-x), :y (+ y delta-y)})))
 
 (defn do-step [robot next-step]
   (case next-step

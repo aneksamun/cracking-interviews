@@ -27,11 +27,11 @@ Enter the number of rows: 6
 ```
 - [Clojure solution](pascal_triangle.clj) usage example:
 ```clojure
-clj:user:>(take 7 triangle)
+clj:user:> (take 7 triangle)
 ([1] [1 1] [1 2 1] [1 3 3 1] [1 4 6 4 1] [1 5 10 10 5 1] [1 6 15 20 15 6 1])
 
-clj:user:>(nth triangle 10)
-;; => [1 10 45 120 210 252 210 120 45 10 1]
+clj:user:> (nth triangle 10)
+[1 10 45 120 210 252 210 120 45 10 1]
 ```
 - [Haskell solution](PascalTriangle.hs) usage example:
 ```haskell
