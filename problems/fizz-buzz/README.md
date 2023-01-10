@@ -26,7 +26,7 @@ for (int i = 1, c3 = 0, c5 = 0; i <= n; i++, c3++, c5++) {
     }
 }
 ```
-It clearly shows the pattern which is been used in [Clojure solution](fizz-buzz.clj) and [Haskell solution](FizzBuzz.hs).
+It clearly shows the pattern which is been used in Clojure and Haskell solutions.
 
 
 - [Clojure solution](fizz_buzz.clj) usage example:
