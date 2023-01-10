@@ -26,3 +26,4 @@ and then summing the offset digits, i.e.
 
 (nth triangle 10)
 ;; => [1 10 45 120 210 252 210 120 45 10 1]
+
