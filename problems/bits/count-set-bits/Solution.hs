@@ -1,5 +1,3 @@
--- countPopulation 109
--- 5 (1101101)
 
 countPopulation :: Integral a => a -> Int
 countPopulation n =
@@ -8,3 +6,4 @@ countPopulation n =
       map (`mod` 2) $
         takeWhile (> 0) $
           iterate (`div` 2) n
+

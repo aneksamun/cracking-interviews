@@ -1,5 +1,3 @@
-;; (count-population 109)
-;; 5
 
 (defn count-population [n]
   (count
