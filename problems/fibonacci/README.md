@@ -19,4 +19,6 @@ clj:user:> (nth fibonacci-iter 9)
 13
 ```
 
-[![](https://markdown-videos.deta.dev/youtube/{video_id})](https://youtu.be/apBWkBDVlow)
+[![](https://markdown-videos.deta.dev/youtube/apBWkBDVlow)](https://youtu.be/apBWkBDVlow)
+
+
