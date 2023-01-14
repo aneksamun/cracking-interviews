@@ -8,6 +8,9 @@ quicksort:
 - check Haskell solution 
 bubble sort:
 - check Kotlin solution
+mars rover:
+- implement Haskell solution
+- add README.md
 
 Kotlin 
 - Convert Kotlin solutions to worksheets

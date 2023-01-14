@@ -3,7 +3,7 @@
 (def rotations
   {:north {:left :west, :right :east}
    :east  {:left :north, :right :south}
-   :south {:left :east, ::right :west}
+   :south {:left :east, :right :west}
    :west  {:left :south, :right :north}})
 
 (def translations
