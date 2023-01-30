@@ -14,17 +14,17 @@ countJumps x y step = ceiling ((x - y) / step)
 
 -- Find when frog can get to the other side
 
-checkConditions x a = 
-    let state = listArray (0, x) $ repeat False
-    in foldl (\acc i -> acc // [(i, True)]) $ indices a
-
+earliestTime x a = 
+    let positions = listArray (1, x) (repeat False)
+    foldl test ([] x) (indices a)
+        where
+            test x y _ = 
+                []
 
 -- A = (1, 3, 1, 4, 2, 3, 5, 4) 
 -- X = 5
 
 -- 5
 
-
--- b = (false, true, true, true, true, false)
 
 
