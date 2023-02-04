@@ -26,73 +26,52 @@ Find the product abc.
     Write a function: that, given a non-empty array A consisting of N integers and integer X, returns the earliest time when the frog can jump to the other side of the river.   
     If the frog is never able to jump to the other side of the river, the function should return −1.   
 
-Algorithm:
+    Algorithm:
+    ```c++
+    int frog_river_one(int X, vector<int> &A) {
+        int N = A.size();
+        vector<bool> leaves(X, false);
+        int leaves_on_the_river = 0;
+        for (int i = 0; i < N; i++) {
+            if (!leaves[A[i] - 1]) {
+                leaves[A[i] - 1] = true;
+                leaves_on_the_river++;
+                if (leaves_on_the_river == X) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
 
+    /**
+        A = (1, 3, 1, 3, 2, 1, 3)
+        X = 3
+        L = [False, False, False, False]
+        leaves_on_the_river = 0
 
--- A = (1, 3, 1, 3, 2, 1, 3)
--- X = 3
---   0     1     2     3
--- False False False False
+        A[0] = 1
+        L[1] => [False, True, False, False]
+        leaves_on_the_river = 1
 
--- A[0] = 1, steps = 3
---   0     1    2     3
--- False True False False
+        A[1] = 3 
+        L[3] => [False, True, False, True]
+        leaves_on_the_river = 2
 
--- A[1] = 3, steps = 2
---   0     1    2     3
--- False True False True
+        A[2] = 1
+        L[1] => [False, True, False, True]
+        leaves_on_the_river = 2
 
--- A[2] = 1, steps = 1
---   0     1    2     3
--- False True False True
+        A[3] = 3
+        L[3] => [False, True, False, True]
+        leaves_on_the_river = 2
 
--- A[3] = 3, steps = 1
---   0     1    2     3
--- False True False True
-
--- A[4] = 2, steps = 1
---   0     1    2     3
--- False True True True
-
--- A = (1, 3, 1, 2, 1, 4, 1, 4)
--- X = 5
-
---   0     1     2     3     4     5
--- False False False False False False
-
--- A[0] = 1, steps = 5
---   1     2     3     4     5
--- True False False False False
-
--- A[1] = 3, steps = 4
---   1     2     3     4     5
--- True False True False False
-
--- A[2] = 3, steps = 3
---   1     2     3     4     5
--- True False True False False
-
--- A[3] = 2, steps = 3
---   1     2     3     4     5
--- True True True False False
-
--- A[4] = 1, steps = 2
---   1    2    3    4     5
--- True True True False False
-
--- A[5] = 4, steps = 2
---   1    2    3    4     5
--- True True True True False
-
--- A[6] = 1, steps = 1
---   1    2    3    4     5
--- True True True True False
-
--- A[7] = 4, steps = 1
---   1    2    3    4     5
--- True True True True False
+        A[4] = 2
+        L[2] => [False, True, True, True]
+        leaves_on_the_river = 3
+    */
+    ```
 
 #### Sources
 https://www.xarg.org/puzzle/project-euler/problem-9/   
 https://dong-xia.medium.com/solving-in-js-frogriverone-ae24684ec882 
-
