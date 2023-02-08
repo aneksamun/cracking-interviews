@@ -1,3 +1,9 @@
+import Data.Bifunctor
+import Data.Map (Map, (!))
+import qualified Data.Map as Map
+
+-- roman
+
 type RomanAndArabic = (String, Int)
 
 numerals :: [RomanAndArabic]
@@ -17,9 +23,9 @@ numerals =
     ("I", 1)
   ]
 
-roman :: Int -> [Char]
+roman :: Int -> String
 roman n
-  | n <= 0 = "-"
+  | n <= 0 = undefined
   | otherwise = convert n 0
   where
     convert 0 _ = ""
@@ -28,4 +34,17 @@ roman n
        in if n >= value
             then numeral ++ convert (n - value) i
             else convert n (i + 1)
+
+-- arabic
+
+single :: Map Char Int
+single = Map.fromList . map (first head) $ filter (\n -> (length . fst) n < 2) numerals
+
+arabic :: String -> Int
+arabic s = foldr convert 0 $ zip <*> tail $ s ++ "I" -- I is a dummy value
+  where
+    convert (roman1, roman2) acc =
+      let a = single ! roman1
+          b = single ! roman2
+       in if a < b then acc - a else acc + a
 

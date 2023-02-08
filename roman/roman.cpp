@@ -21,7 +21,7 @@ const vector<tuple<string, int>> numerals = {
     tuple("I", 1)
 };
 
-string convert(int number) {
+string convert_to_roman(uint number) {
     string roman;
     for (auto& [symbol, value] : numerals) {
         while (number >= value) {
@@ -29,18 +29,29 @@ string convert(int number) {
             number -= value;
         }
     }
-    return (roman == "" ? "-" : roman);
+    return roman;
+}
+
+uint convert_to_arabic(string roman) {
+    uint arabic = 0;
+    for (auto& [symbol, value] : numerals) {
+        while (roman.find(symbol) == 0) {
+            arabic += value;
+            roman = roman.substr(symbol.length());
+        }
+    }
+    return (roman == "" ? arabic : 0);
 }
 
 int main(int argc, const char* argv[]) {
     for (;;) {
         cout << "Enter number: ";
-        int number;
+        uint number;
         cin >> number;
 
         if (!cin) break;
 
-        cout << "Roman numeral: " << convert(number) << endl;
+        cout << "Roman numeral: " << convert_to_roman(number) << endl;
         cout << "\nType non-number to exit\n";
     }
     return 0;

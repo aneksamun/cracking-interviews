@@ -1,27 +1,41 @@
-# Roman numerals
+# <ins>Roman numerals</ins>
 
 ### Task
-Convert arabic number to roman
+Convert arabic number to roman and vice versa.
 
-### Examples
+Examples:
 
-  Input | Output
- -------|--------
-   1    | "I"
-   2    | "II"
-   3    | "III"
-   4    | "IV"
-   5    | "V"
-   6    | "VI"
-   9    | "IX"
-   27   | "XXVII"
-   48   | "XLVIII"
-   59   | "LIX"
-   93   | "XCIII"
-   141  | "CXLI"
-   163  | "CLXIII"
-   402  | "CDII"
-   575  | "DLXXV"
-   911  | "CMXI"
-   1024 | "MXXIV"
-   3000 | "MMM"
+  Arabic | Roman
+ --------|--------
+    1    | "I"
+    2    | "II"
+    3    | "III"
+    4    | "IV"
+    5    | "V"
+    6    | "VI"
+    9    | "IX"
+    27   | "XXVII"
+    48   | "XLVIII"
+    59   | "LIX"
+    93   | "XCIII"
+    141  | "CXLI"
+    163  | "CLXIII"
+    402  | "CDII"
+    575  | "DLXXV"
+    911  | "CMXI"
+    1024 | "MXXIV"
+    3000 | "MMM"
+
+- [Haskell solution](Roman.hs) usage example:
+```haskell
+*Main> roman 89
+"LXXXIX"
+*Main> arabic "LXXXIX"
+89
+```
+- [C++ solution](Roman.cpp) usage example:
+```c++
+```
+- [Clojure solution](Roman.clj) usage example:
+```clojure
+```
