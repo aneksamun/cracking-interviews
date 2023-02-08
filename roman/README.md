@@ -1,8 +1,6 @@
-# <ins>Roman numerals</ins>
+### <ins>Roman numerals</ins>
 
-### Task
-Convert arabic number to roman and vice versa.
-
+Convert arabic number to roman and vice versa.  
 Examples:
 
   Arabic | Roman
