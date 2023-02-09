@@ -36,7 +36,7 @@ string convert_to_roman(uint number) {
 // IXIVV
 // I < X, 0 + 10 - 1 = 9, i++
 // I < V, 9 + 5 - 1 = 13, i++
-// V < \0, 13 + 5 = 18, i++
+// V < \0, 13 + 5 = 18
 uint convert_to_arabic(string roman) {
     uint arabic = 0;
     map<char, int> m;
