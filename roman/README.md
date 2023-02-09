@@ -31,12 +31,12 @@ Examples:
 *Main> arabic "LXXXIX"
 89
 ```
-- [C++ solution](Roman.cpp) usage example:
+- [C++ solution](roman.cpp) usage example:
 ```c++
 Enter number: 89
 Roman: LXXXIX
 Arabic: 89
 ```
-- [Clojure solution](Roman.clj) usage example:
+- [Clojure solution](roman.clj) usage example:
 ```clojure
 ```
