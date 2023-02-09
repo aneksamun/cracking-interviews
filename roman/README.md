@@ -33,6 +33,9 @@ Examples:
 ```
 - [C++ solution](Roman.cpp) usage example:
 ```c++
+Enter number: 89
+Roman: LXXXIX
+Arabic: 89
 ```
 - [Clojure solution](Roman.clj) usage example:
 ```clojure
