@@ -39,4 +39,8 @@ Arabic: 89
 ```
 - [Clojure solution](roman.clj) usage example:
 ```clojure
+clj:user:> (roman/convert-to-roman 89)
+"LXXXIX"
+clj:user:> (roman/convert-to-arabic "LXXXIX")
+89
 ```
