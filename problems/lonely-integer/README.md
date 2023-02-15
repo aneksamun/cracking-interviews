@@ -6,7 +6,7 @@ Finds unique element. Example:
 [1, 1, 2, 2, 3] -> 3
 ```
 
-Solution maybe using XOR operation.
+Solution using XOR operation.
 ```scala
 def findUnique(array: Iterable[Int]): Int = 
   array.reduceLeft((prev, curr) => prev ^ curr)  
