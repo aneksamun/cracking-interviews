@@ -1,4 +1,3 @@
-import Data.Set (Set)
 import qualified Data.Set as Set
 
 isPerm :: [Int] -> Bool
