@@ -35,3 +35,4 @@ clj:user:> (user/min-missing-elem [-1 -3])
 clj:user:> (user/min-missing-elem [1 2])
 nil
 ```
+- [C++ solution](solution.cpp)
