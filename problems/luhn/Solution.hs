@@ -8,12 +8,11 @@ luhn4 fst snd thrd frth = n `mod` 10 == 0
   where
     n = luhnDouble fst + snd + luhnDouble thrd + frth
 
--- lunh s =
---     let
---         digits = map (\x -> read [x] :: Int) s
---         digits' = reverse digits
---         digits'' = zipWith (*) (cycle [1,2]) digits'
---         digits''' = map (\x -> if x > 9 then x - 9 else x) digits''
---     in
---         sum digits''' `mod` 10 == 0
+luhn :: [Int] -> Bool
+luhn digits = count digits `mod` 10 == 0
+  where
+    count = sum . zipWith ($) (cycle [id, luhnDouble]) . reverse 
+    
+luhn' :: [Char] -> Bool  
+luhn' = luhn . map (\ch -> read [ch] :: Int)  
 
