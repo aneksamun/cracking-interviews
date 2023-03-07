@@ -31,3 +31,13 @@ true
 % » ./luhn "4783"
 false
 ```
+[Clojure solution](solution.clj) usage example:
+```clojure
+clj꞉user꞉> (user/luhn [1 7 8 4])
+true
+clj꞉user꞉> (user/luhn [7 9 9 2 7 3 9 8 7 1 3])
+true
+
+clj꞉user꞉> (user/luhn' "4783")
+false
+```
