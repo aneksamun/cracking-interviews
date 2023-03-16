@@ -1,12 +1,22 @@
 module ExpirableMap where
 
-import Control.Monad
+import Control.Monad ()
+import Control.Monad.Cont (MonadTrans (lift))
+import Control.Monad.Trans.Maybe (MaybeT (MaybeT, runMaybeT))
 import Data.Fixed (Pico)
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Time
+    ( fromGregorian,
+      diffUTCTime,
+      getCurrentTime,
+      timeOfDayToTime,
+      UTCTime(UTCTime),
+      TimeOfDay(TimeOfDay) )
 import Data.Time.Clock
-import Distribution.Simple.Doctest (doctest)
+    ( diffUTCTime, getCurrentTime, UTCTime(UTCTime) )
+
+-- mkUTCTime
 
 mkUTCTime ::
   (Integer, Int, Int) ->
@@ -22,10 +32,9 @@ mkUTCTime (year, mon, day) (hour, min, sec) =
 data Expirable a = Expirable {value :: a, validUntil :: UTCTime}
   deriving (Eq, Show)
 
-isExpired :: Expirable a -> IO Bool
-isExpired Expirable {validUntil = validUntil} = do
-  now <- getCurrentTime
-  return $ now `diffUTCTime` validUntil > 0
+isExpiredAgainst :: UTCTime -> Expirable a -> Bool
+isExpiredAgainst expiryTime Expirable {validUntil = validUntil} =
+  expiryTime `diffUTCTime` validUntil > 0
 
 -- ExpirableMap data type
 
@@ -38,36 +47,26 @@ empty = ExpirableMap Map.empty
 fromList :: Ord k => [(k, Expirable v)] -> ExpirableMap k v
 fromList = ExpirableMap . Map.fromList
 
-insert :: Ord k => k -> Expirable v -> ExpirableMap k v -> ExpirableMap k v
-insert k v (ExpirableMap m) = ExpirableMap $ Map.insert k v m
+insert :: Ord k => k -> Expirable v -> ExpirableMap k v -> IO (ExpirableMap k v)
+insert k v (ExpirableMap m) = do
+  now <- getCurrentTime
+  let unexpired = Map.filter (not . isExpiredAgainst now) m
+  return $ ExpirableMap $ Map.insert k v unexpired
+
+lookup :: Ord k => k -> ExpirableMap k v -> MaybeT IO (Expirable v)
+lookup k (ExpirableMap m) = do
+  now <- lift getCurrentTime
+  let unexpired = Map.filter (not . isExpiredAgainst now) m
+  MaybeT $ return $ Map.lookup k unexpired
 
 -- Main
 
 main :: IO ()
--- main = do
---   let valid = Expirable {value = 1, validUntil = mkUTCTime (2023, 9, 1) (15, 13, 0)}
---    in isExpired valid >>= print
+main = do
+  let m = fromList [("a", Expirable 1 (mkUTCTime (2020, 1, 1) (0, 0, 0)))]
+  m' <- insert "b" (Expirable 2 (mkUTCTime (2020, 1, 1) (0, 0, 0))) m
+  print m'
+  print =<< runMaybeT (ExpirableMap.lookup "a" m')
+  print =<< runMaybeT (ExpirableMap.lookup "b" m')
 
--- main = do
---   let expired = Expirable {value = 1, validUntil = mkUTCTime (2019, 9, 1) (15, 13, 0)}
---    in isExpired expired >>= print
-
--- main = do
---   now <- getCurrentTime
---   let a = Expirable {value = 1, validUntil = now}
---    in print $ fromList [("a", a)]
-
--- main = do
---   now <- getCurrentTime
---   let a = Expirable {value = 1, validUntil = now}
---       b = Expirable {value = 2, validUntil = now}
---       c = Expirable {value = 3, validUntil = now}
---    in print $ snd <$> [("a", a), ("b", b), ("c", c)]
-
-main =
-  do
-    print $ filterM (\x -> if x then Just True else Just False) [True, False, True]
-
-dot :: [a] -> [IO a]
-dot xs = do
-  return <$> xs
+  
