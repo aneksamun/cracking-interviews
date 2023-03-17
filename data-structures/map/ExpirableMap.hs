@@ -7,14 +7,16 @@ import Data.Fixed (Pico)
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Time
-    ( fromGregorian,
-      diffUTCTime,
-      getCurrentTime,
-      timeOfDayToTime,
-      UTCTime(UTCTime),
-      TimeOfDay(TimeOfDay) )
+  ( TimeOfDay (TimeOfDay),
+    UTCTime (UTCTime),
+    diffUTCTime,
+    fromGregorian,
+    getCurrentTime,
+    timeOfDayToTime )
 import Data.Time.Clock
-    ( diffUTCTime, getCurrentTime, UTCTime(UTCTime) )
+  ( UTCTime (UTCTime),
+    diffUTCTime,
+    getCurrentTime )
 
 -- mkUTCTime
 
@@ -56,8 +58,12 @@ insert k v (ExpirableMap m) = do
 lookup :: Ord k => k -> ExpirableMap k v -> MaybeT IO (Expirable v)
 lookup k (ExpirableMap m) = do
   now <- lift getCurrentTime
-  let unexpired = Map.filter (not . isExpiredAgainst now) m
-  MaybeT $ return $ Map.lookup k unexpired
+  MaybeT $ return $ Map.lookup k m >>= filterUnexpired now
+  where
+    filterUnexpired now value =
+      if isExpiredAgainst now value
+        then Nothing
+        else Just value
 
 -- Main
 
@@ -69,4 +75,3 @@ main = do
   print =<< runMaybeT (ExpirableMap.lookup "a" m')
   print =<< runMaybeT (ExpirableMap.lookup "b" m')
 
-  
