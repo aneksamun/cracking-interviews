@@ -9,6 +9,7 @@ import qualified Data.Map as Map
 import Data.Time
   ( TimeOfDay (TimeOfDay),
     UTCTime (UTCTime),
+    addUTCTime,
     diffUTCTime,
     fromGregorian,
     getCurrentTime,
@@ -52,26 +53,32 @@ fromList = ExpirableMap . Map.fromList
 insert :: Ord k => k -> Expirable v -> ExpirableMap k v -> IO (ExpirableMap k v)
 insert k v (ExpirableMap m) = do
   now <- getCurrentTime
-  let unexpired = Map.filter (not . isExpiredAgainst now) m
-  return $ ExpirableMap $ Map.insert k v unexpired
+  let notExpired = Map.filter (not . isExpiredAgainst now) m
+  return $ ExpirableMap $ Map.insert k v notExpired
 
 lookup :: Ord k => k -> ExpirableMap k v -> MaybeT IO (Expirable v)
 lookup k (ExpirableMap m) = do
   now <- lift getCurrentTime
-  MaybeT $ return $ Map.lookup k m >>= filterUnexpired now
+  MaybeT $ return $ Map.lookup k m >>= filterNotExpired now
   where
-    filterUnexpired now value =
+    filterNotExpired now value =
       if isExpiredAgainst now value
         then Nothing
         else Just value
+
+size :: ExpirableMap k v -> Int
+size (ExpirableMap m) = Map.size m
 
 -- Main
 
 main :: IO ()
 main = do
-  let m = fromList [("a", Expirable 1 (mkUTCTime (2020, 1, 1) (0, 0, 0)))]
-  m' <- insert "b" (Expirable 2 (mkUTCTime (2020, 1, 1) (0, 0, 0))) m
-  print m'
-  print =<< runMaybeT (ExpirableMap.lookup "a" m')
-  print =<< runMaybeT (ExpirableMap.lookup "b" m')
+  now <- getCurrentTime
+  let teddy = Expirable {value = "Teddy", validUntil = mkUTCTime (2020, 1, 1) (0, 0, 0)}
+      alice = Expirable {value = "Alice", validUntil = mkUTCTime (2021, 9, 1) (0, 0, 0)}
+      james = Expirable {value = "James", validUntil = addUTCTime 100 now}
+      group = fromList [("t", teddy)]
+  print =<< runMaybeT (ExpirableMap.lookup "t" group)                                        -- Nothing as Teddy expired
+  print . size =<< insert "a" alice group                                                    -- Removes Teddy and adds Alice
+  insert "j" james group >>= \people -> runMaybeT (ExpirableMap.lookup "j" people) >>= print -- Prints James
 
