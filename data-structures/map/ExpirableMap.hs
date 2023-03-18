@@ -18,6 +18,7 @@ import Data.Time.Clock
   ( UTCTime (UTCTime),
     diffUTCTime,
     getCurrentTime )
+import Distribution.Parsec (retPos)
 
 -- mkUTCTime
 
@@ -54,7 +55,11 @@ insert :: Ord k => k -> Expirable v -> ExpirableMap k v -> IO (ExpirableMap k v)
 insert k v (ExpirableMap m) = do
   now <- getCurrentTime
   let notExpired = Map.filter (not . isExpiredAgainst now) m
-  return $ ExpirableMap $ Map.insert k v notExpired
+  return $
+    ExpirableMap $
+      if isExpiredAgainst now v
+        then notExpired
+        else Map.insert k v notExpired
 
 lookup :: Ord k => k -> ExpirableMap k v -> MaybeT IO (Expirable v)
 lookup k (ExpirableMap m) = do
@@ -72,13 +77,15 @@ size (ExpirableMap m) = Map.size m
 -- Main
 
 main :: IO ()
-main = do
-  now <- getCurrentTime
-  let teddy = Expirable {value = "Teddy", validUntil = mkUTCTime (2020, 1, 1) (0, 0, 0)}
-      alice = Expirable {value = "Alice", validUntil = mkUTCTime (2021, 9, 1) (0, 0, 0)}
-      james = Expirable {value = "James", validUntil = addUTCTime 100 now}
-      group = fromList [("t", teddy)]
-  print =<< runMaybeT (ExpirableMap.lookup "t" group)                                        -- Nothing as Teddy expired
-  print . size =<< insert "a" alice group                                                    -- Removes Teddy and adds Alice
-  insert "j" james group >>= \people -> runMaybeT (ExpirableMap.lookup "j" people) >>= print -- Prints James
+main =
+  do
+    now <- getCurrentTime
+    let teddy = Expirable {value = "Teddy", validUntil = mkUTCTime (2020, 1, 1) (0, 0, 0)}
+        alice = Expirable {value = "Alice", validUntil = mkUTCTime (2021, 9, 1) (0, 0, 0)}
+        james = Expirable {value = "James", validUntil = addUTCTime 100 now}
+        group = fromList [("t", teddy)]
+    print =<< runMaybeT (ExpirableMap.lookup "t" group)    -- Nothing as Teddy expired
+    print . size =<< insert "a" alice group                -- Removes Teddy and do not inserts Alice having size of 0
+    insert "j" james group >>= \people ->
+      runMaybeT (ExpirableMap.lookup "j" people) >>= print -- Prints James
 
