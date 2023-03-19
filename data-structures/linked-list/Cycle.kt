@@ -1,6 +1,4 @@
-/**
- * A linked list node.
- */
+
 class Node<T>(val data: T) {
     var next: Node<T>? = null
 
@@ -21,7 +19,7 @@ fun <T> hasCycle(head: Node<T>?): Boolean {
     var fast : Node<T>? = head.next
 
     while (slow != fast) {
-        if (fast == null || fast.next == null) return false
+        if (fast?.next == null) return false
         slow = slow?.next
         fast = fast.next?.next
     }
@@ -29,13 +27,3 @@ fun <T> hasCycle(head: Node<T>?): Boolean {
     return true
 }
 
-fun testLinkedList() {
-    val third = Node(3)
-    val second = Node(2, third)
-    val head = Node(1, second)
-
-    head.next = second
-    third.next = second
-
-    println(hasCycle(head));
-}
